@@ -1,5 +1,15 @@
 #!/bin/bash
-chown www-data:www-data /app -R
+
+chmod -R 755 /scripts/*.sh
+
+#Inits
+for SCRIPT in /scripts/init/*.sh; 
+do
+    if [ -f $SCRIPT -a -x $SCRIPT ]
+    then
+        $SCRIPT
+    fi
+done
 
 if [ "$ALLOW_OVERRIDE" = "**False**" ]; then
     unset ALLOW_OVERRIDE

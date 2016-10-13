@@ -1,5 +1,6 @@
 FROM ubuntu:trusty
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+#MAINTAINER Fernando Mayo <fernando@tutum.co>
+MAINTAINER Gavin Jones <gjones@powerfarming.co.nz>
 
 # Install base packages
 RUN apt-get update && \
@@ -22,8 +23,10 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
 ENV ALLOW_OVERRIDE **False**
 
 # Add image configuration and scripts
-ADD run.sh /run.sh
-RUN chmod 755 /*.sh
+RUN     mkdir -p /scripts/init.d/
+COPY    run.sh /scripts/run.sh
+COPY    init.d/ /scripts/init.d/
+RUN     chmod -R 755 /scripts/*.sh
 
 # Configure /app folder with sample app
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
@@ -31,4 +34,4 @@ ADD sample/ /app
 
 EXPOSE 80
 WORKDIR /app
-CMD ["/run.sh"]
+CMD ["/scripts/run.sh"]
