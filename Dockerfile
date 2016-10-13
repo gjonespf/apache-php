@@ -27,7 +27,7 @@ ENV ALLOW_OVERRIDE **False**
 RUN     mkdir -p /scripts/init.d/
 COPY    run.sh /scripts/run.sh
 COPY    init.d/ /scripts/init.d/
-RUN     chmod -R 755 /scripts/*.sh
+RUN     chmod -R a+rx /scripts/*.sh && chmod -R a+rx /scripts/init.d/*.sh 
 
 # Configure /app folder with sample app
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html

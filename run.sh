@@ -1,9 +1,9 @@
 #!/bin/bash
 
-chmod -R 755 /scripts/*.sh
+chmod -R a+rx /scripts/*.sh && chmod -R a+rx /scripts/init.d/*.sh
 
 #Inits
-for SCRIPT in /scripts/init/*.sh; 
+for SCRIPT in /scripts/init.d/*.sh; 
 do
     if [ -f $SCRIPT -a -x $SCRIPT ]
     then
