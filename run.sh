@@ -7,6 +7,7 @@ for SCRIPT in /scripts/init.d/*.sh;
 do
     if [ -f $SCRIPT -a -x $SCRIPT ]
     then
+        echo "Executing startup script $SCRIPT"
         $SCRIPT
     fi
 done
