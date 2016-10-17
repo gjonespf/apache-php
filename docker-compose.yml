@@ -1,0 +1,9 @@
+version: '2'
+services:
+
+    apache-php-test:
+        build:
+            context: .
+            dockerfile: Dockerfile     
+        image:  gavinjonespf/apache-php:${BUILD_TAG}
+
