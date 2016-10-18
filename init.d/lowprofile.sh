@@ -4,7 +4,7 @@ cat <<EOT >> /etc/apache2/sites-available/000-default.conf
 <IfModule mpm_prefork_module>
         StartServers            1
         MinSpareServers         1
-        MaxSpareServers         2
+        MaxSpareServers         1
         MaxRequestWorkers       30
         MaxConnectionsPerChild  0
 </IfModule>
